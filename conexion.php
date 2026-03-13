@@ -1,9 +1,15 @@
 <?php
 
-$conn = new mysqli("localhost","root","","almanaque");
+$host = $_ENV['MYSQLHOST'];
+$user = $_ENV['MYSQLUSER'];
+$password = $_ENV['MYSQLPASSWORD'];
+$database = $_ENV['MYSQLDATABASE'];
+$port = $_ENV['MYSQLPORT'];
 
-if($conn->connect_error){
-die("Error de conexion");
+$conn = new mysqli($host, $user, $password, $database, $port);
+
+if ($conn->connect_error) {
+    die("Error de conexion: " . $conn->connect_error);
 }
 
 ?>
